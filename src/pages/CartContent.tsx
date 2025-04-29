@@ -36,12 +36,12 @@ export const CartContent = (props: {
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Size</th>
+                  <th scope="col">Имя</th>
+                  <th scope="col">Размер</th>
                   <th scope="col">Qty</th>
-                  <th scope="col">Price</th>
-                  <th scope="col">Total</th>
-                  <th scope="col">Edit</th>
+                  <th scope="col">Цена</th>
+                  <th scope="col">Итого</th>
+                  <th scope="col">Изменить</th>
                 </tr>
               </thead>
               <tbody>
@@ -56,12 +56,12 @@ export const CartContent = (props: {
                             <td>{item.qty}</td>
                             <td>{item.price}</td>
                             <td>{item.qty * item.price}</td>
-                            <td><button className="btn btn-outline-danger btn-sm" onClick={() => deleteItem(item.id, item.size)}>Delete</button></td>
+                            <td><button className="btn btn-outline-danger btn-sm" onClick={() => deleteItem(item.id, item.size)}>Удалить</button></td>
                         </tr>
                     )
                 })}
                 <tr>
-                  <td className="text-right">Total</td>
+                  <td className="text-right">Итого</td>
                   <td>
                     {cartItems.reduce((acc: number, item: CartItem) => acc + item.qty * item.price,
                         0,) + '$'} 
@@ -71,11 +71,11 @@ export const CartContent = (props: {
             </table>
           </section>
           <section className="order">
-            <h2 className="text-center">Submit</h2>
+            <h2 className="text-center">Отправить</h2>
             <div className="card">
               <form className="card-body" onSubmit={event => event.preventDefault}>
                 <div className="form-group">
-                  <label>Phone number</label> 
+                  <label>Номер телефона</label> 
                   <input 
                     className="form-control" 
                     id="phone" 
@@ -86,7 +86,7 @@ export const CartContent = (props: {
                   />
                 </div>
                 <div className="form-group">
-                  <label>Delivery address</label>
+                  <label>Адресс доставки</label>
                   <input 
                     className="form-control" 
                     id="address" 
@@ -105,9 +105,9 @@ export const CartContent = (props: {
                     checked={form.agreement}
                     onChange={handlerInputChange} 
                   />
-                  <label className="form-check-label">Agree with the delivery rules.</label>
+                  <label className="form-check-label">Принять соглашение</label>
                 </div>
-                <button type="submit" className="btn btn-outline-secondary" onClick={submitOrder}>Submit</button>
+                <button type="submit" className="btn btn-outline-secondary" onClick={submitOrder}>Отправить</button>
               </form>
             </div>
           </section>

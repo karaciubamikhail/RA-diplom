@@ -67,6 +67,7 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [cartQty, setCartQty] = useState(0);
   const [searchHeaderState, setSearchHeaderState] = useState(0);
+  const [items, setItems] = useState([]);
   const [preLoaderStatus, setPreLoaderStatus] = useState(true);
 
   const navigate = useNavigate();
@@ -107,19 +108,38 @@ function App() {
     setCurOffset(1);
   }
 
-  //load more products
-  const loadMore = (offset: number) => {
-    if (urlItems.indexOf('offset') > 0) {
-      setUrlItems(urlItems.substring(0, urlItems.indexOf('offset')) + 'offset=' + offset);
-    }
-    else if (urlItems.indexOf('?') > 0) {
-      setUrlItems(urlItems + '&offset=' + offset);
-    }
-    else {
-      setUrlItems(urlItems + '?offset=' + offset);
-    }
-    setCurOffset(curOffset + 1);
+const [hasMore, setHasMore] = useState(true);
+
+const loadMore = async () => {
+  if (!hasMore) return;
+
+  const offset = curOffset + 1;
+  let newUrl = '';
+
+  if (urlItems.includes('offset')) {
+    newUrl = urlItems.substring(0, urlItems.indexOf('offset')) + 'offset=' + offset;
+  } else if (urlItems.includes('?')) {
+    newUrl = urlItems + '&offset=' + offset;
+  } else {
+    newUrl = urlItems + '?offset=' + offset;
   }
+
+  setUrlItems(newUrl);
+
+  try {
+    const response = await fetch(newUrl);
+    const data = await response.json();
+
+    if (data.length === 0) {
+      setHasMore(false);
+    } else {
+      setItems(prev => [...prev, ...data]);
+      setCurOffset(offset);
+    }
+  } catch (error) {
+    console.error('Ошибка при загрузке:', error);
+  }
+};
 
   const initialSearchState = {
     text: ''
@@ -156,24 +176,25 @@ function App() {
   const [searchHeaderForm, setSearchHeaderForm] = useState(initialSearchState);
 
   //click over search header form handler
-  const clickSearchHeader = () => {
-
-    //if first click - expand search input
+  const clickSearchHeader = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  
+    // if first click - expand search input
     if (searchHeaderState === 0) {
       setSearchHeaderState(1);
     }
-    //if second click - redirect to catalog and show search results
+    // if second click - redirect to catalog and show search results
     else if (searchHeaderState === 1) {
       setSearchHeaderState(0);
-
+  
       if (searchHeaderForm.text) {
         navigate('/catalog');
-        setSearchForm({text: searchHeaderForm.text});
-
+        setSearchForm({ text: searchHeaderForm.text });
+  
         searchSubmit();
       }
     }
-  }
+  };
 
   //add Product to the Cart
   const addToCart = (id: number, title: string, size: string, price: number, qty: number) => {

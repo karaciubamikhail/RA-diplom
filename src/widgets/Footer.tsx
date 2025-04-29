@@ -23,16 +23,16 @@ export const Footer = () => {
                         </div>
                     </section>
                     <section>
-                        <div className="footer-copyright">2009-2024 © BosaNoga.ru — moden shoes & accessories.
-                        All rights reserved.<br/>Delivery worldwide!
+                        <div className="footer-copyright">2009-2024 © BosaNoga.ru — современная обувь и аксесуары.
+                        Все права защищены.<br/>!
                         </div>
                     </section>
                 </div>
                 <div className="col text-right">
                     <section className="footer-contacts">
-                        <h5>Contacts:</h5>
+                        <h5>Контакты:</h5>
                         <a className="footer-contacts-phone" href="tel:+7-495-790-35-03">+55 777 903 503</a>
-                        <span className="footer-contacts-working-hours">Everyday: from 9am till 9pm</span>
+                        <span className="footer-contacts-working-hours">Каждый день: с 9 до 21:00</span>
                         <a className="footer-contacts-email" href="mailto:office@bosanoga.ru">office@bosanoga.com</a>
                         <div className="footer-social-links">
                             <div className="footer-social-link footer-social-link-twitter"></div>

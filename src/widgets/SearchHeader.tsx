@@ -19,7 +19,7 @@ export const SearchHeader = (props: {
     if (searchHeaderState) {
         return (
             <>
-                <form className="header-search-form form-inline">
+                <form className="header-search-form form-inline" onSubmit={clickSearchHeader}>
                     <input 
                         className='header-search'
                         name="text"
@@ -27,7 +27,7 @@ export const SearchHeader = (props: {
                         onChange={handlerInputChange}
                     />
                 </form>
-                <div data-id="search-expander" className="header-controls-pic header-controls-search" onClick={clickSearchHeader}>
+                <div data-id="search-expander" className="header-controls-pic header-controls-search" onClick={clickSearchHeader} >
                 </div>
             </>
         )

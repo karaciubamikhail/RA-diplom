@@ -2,14 +2,14 @@ export const AboutContent = () => {
     return (
         <>
             <section className="top-sales">
-                <h2 className="text-center">About the shop</h2>
+                <h2 className="text-center">О магазине</h2>
                 <p>
-                We are a modern shoe brand committed to genuine craftsmanship and an 
-                enduring love for stylish footwear. Our inspiration comes from various 
-                cultural influences, with a primary focus on the fascinating individuals 
-                we encounter at Tony's. Each collection revolves around the idea of 
-                everyday style, placing durable quality and sophisticated detailing at 
-                the core of our design approach.
+                Мы — современный обувной бренд, преданный подлинному мастерству и
+                неувядающей любви к стильной обуви. Наше вдохновение исходит из различных
+                культурных влияний, с основным акцентом на интересных личностях,
+                с которыми мы сталкиваемся в Tony's. Каждая коллекция вращается вокруг идеи
+                повседневного стиля, помещая прочное качество и изысканную детализацию в
+                основу нашего подхода к дизайну.
                 </p>
             </section>
         </>

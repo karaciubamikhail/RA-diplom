@@ -53,29 +53,29 @@ export const ProductContent = (props: {
                                         <td>{product.sku}</td>
                                     </tr>
                                     <tr>
-                                        <td>Brand</td>
+                                        <td>Бренд</td>
                                         <td>{product.manufacturer}</td>
                                     </tr>
                                     <tr>
-                                        <td>Color</td>
+                                        <td>Цвет</td>
                                         <td>{product.color}</td>
                                     </tr>
                                     <tr>
-                                        <td>Material</td>
+                                        <td>Материал</td>
                                         <td>{product.material}</td>
                                     </tr>
                                     <tr>
-                                        <td>Season</td>
+                                        <td>Сезонность</td>
                                         <td>{product.season}</td>
                                     </tr>
                                     <tr>
-                                        <td>Type</td>
+                                        <td>Тип</td>
                                         <td>{product.reason}</td>
                                     </tr>
                                 </tbody>
                             </table>
                             <div className="text-center">
-                                <p>Sizes in stock: 
+                                <p>Размеры: 
                                     {sizes.map((item: Size) => {
                                         let selected = '';
                                         if (item.size === selectedSize) {
@@ -95,7 +95,7 @@ export const ProductContent = (props: {
                             </div>
                             <button className={"btn btn-danger btn-block btn-lg" + hidden} onClick={() => {
                                 addToCart(product.id, product.title, selectedSize, product.price, curQty);
-                            }}>Add to card</button>
+                            }}>Добавить в корзину</button>
                         </div>
                     </div>
                 </section>
